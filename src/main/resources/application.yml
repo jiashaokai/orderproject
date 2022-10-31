@@ -1,0 +1,34 @@
+order-project:
+  super-admin:
+    username: admin
+    password: admin
+server:
+  port: 10200
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/order?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: P@ssw0rd
+    initialization-mode: always
+    sql-script-encoding: utf-8
+    continue-on-error: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      #使用@TableGenerator注解需要用到的
+      use-new-id-generator-mappings: true
+      naming:
+        physical-strategy: com.order.config.UpperTableStrategy
+    open-in-view: true
+    properties:
+      #格式化SQL语句
+      hibernate.format_sql: true
+      hibernate.dialect: com.order.config.MySQL5DialectUTF8
+  redis:
+    host: localhost
+    port: 6379
+    password: root
+    database: 0
+    timeout: 5000
